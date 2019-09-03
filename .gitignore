@@ -1,6 +1,7 @@
-HELP.md
+README.md
+mvnw
+mvnw.cmd
 target/
-!.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**
 !**/src/test/**
 
@@ -15,6 +16,7 @@ target/
 
 ### IntelliJ IDEA ###
 .idea
+.mvn
 *.iws
 *.iml
 *.ipr
