@@ -1,4 +1,4 @@
-package com.ando.spring.web.entities;
+package com.ando.web.entities;
 
 public class Department {
 

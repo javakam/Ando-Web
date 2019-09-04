@@ -1,13 +1,14 @@
-package com.ando.spring.web.dao;
+package com.ando.web.dao;
+
+import com.ando.web.entities.Department;
+import com.ando.web.entities.Employee;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.ando.spring.web.entities.Department;
-import com.ando.spring.web.entities.Employee;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 @Repository
 public class EmployeeDao {
 
@@ -36,7 +37,8 @@ public class EmployeeDao {
 		employee.setDepartment(departmentDao.getDepartment(employee.getDepartment().getId()));
 		employees.put(employee.getId(), employee);
 	}
-	
+
+	//查询所有员工
 	public Collection<Employee> getAll(){
 		return employees.values();
 	}
