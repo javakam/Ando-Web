@@ -1,4 +1,4 @@
-package com.ando.spring.web;
+package com.ando.web;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

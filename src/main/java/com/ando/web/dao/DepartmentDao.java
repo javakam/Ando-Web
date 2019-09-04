@@ -1,12 +1,11 @@
-package com.ando.spring.web.dao;
+package com.ando.web.dao;
+
+import com.ando.web.entities.Department;
+import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-
-import com.ando.spring.web.entities.Department;
-import org.springframework.stereotype.Repository;
-
 
 @Repository
 public class DepartmentDao {

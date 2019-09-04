@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>成功页面！</h3>
+<!--th:text 将div里面的文本内容设置为 -->
+<div id="div01" class="myDiv" th:id="${hello}" th:class="${hello}" th:text="${hello}">这是显示欢迎信息</div>
+<hr/>
+
+<p>转义字符("< h1>你好世界< /h1>") </p>
+<div th:text="${hello}?: '二狗'"></div>
+<div th:utext="${hello}?: '二狗'"></div>
+<hr/>
+
+<!-- th:each 每次遍历都会生成当前这个标签： 3个h4 -->
+<h5 th:text="${user}" th:each="user,stat:${users}"></h5>
+<p>一行内: </p>
+<h5>
+    <span th:each="user:${users}"> [[${user}]] </span>
+</h5>
+<hr>
+
+<p>*{...} : 选择表达式。 th:object -> #object</p>
+<div th:object="${realuser}">
+    <p th:text="*{'姓名:'+ name}">name</p>
+    <p th:text="*{'年龄:'+age }"></p>
+    <p th:utext="*{'爱好:'+ run()}">跑步...</p>
+</div>
+<hr>
+
+<form th:action="@{/upload}" method="post" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <input type="submit"/>
+</form>
+<hr>
+
+<p>th:if 或者 th:unless ，两者的意思恰好相反 : </p>
+<b>th:if</b>
+<span th:if="${daming.age} ge 18" th:text="'成年人'?:'未成年'"></span>
+<b>三目运算符</b>
+<span th:text="${realuser.age} ge 18 ?'成年人':'未成年'"></span>
+<hr>
+
+<p><b>th:switch th:case th:case="*"表示默认</b></p>
+<div th:switch="${realuser.type}">
+    <p th:case="'admin'">管理员</p>
+    <p th:case="'manager'">经理</p>
+    <p th:case="*">普通用户</p>
+</div>
+<hr>
+
+<p th:utext="'...............................todo 2019年9月4日 16:30:42  ...' + #{${realuser.name}(${#locale.country})}">
+    Welcome to our grocery store, Sebastian Pepper!
+</p>
+<!--<p th:utext="#{${realuser.whoSpeak(${'额...'})}}">-->
+<!--    Welcome to our grocery store, Sebastian Pepper!-->
+<!--</p>-->
+<hr>
+
+
+</body>
+</html>
