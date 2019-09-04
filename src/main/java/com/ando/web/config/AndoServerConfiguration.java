@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import java.util.Arrays;
 
 @Configuration
-public class MyServerConfig {
+public class AndoServerConfiguration {
 
     //注册三大组件
     @Bean

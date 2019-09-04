@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 //使用WebMvcConfigurerAdapter可以来扩展SpringMVC的功能
 //@EnableWebMvc   不要接管SpringMVC
 @Configuration
-public class MyMvcConfig implements WebMvcConfigurer {
+public class AndoMvcConfiguration implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
@@ -27,6 +27,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
             @Override
             public void addViewControllers(ViewControllerRegistry registry) {
                 registry.addViewController("/").setViewName("login");
+                registry.addViewController("/login").setViewName("login");
                 registry.addViewController("/index.html").setViewName("login");
                 registry.addViewController("/main.html").setViewName("dashboard");
             }
@@ -38,7 +39,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
                 //静态资源；  *.css , *.js
                 //SpringBoot已经做好了静态资源映射
 //                registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
-//                        .excludePathPatterns("/index.html","/","/user/login");
+//                        .excludePathPatterns("/index.html","/","/login","/user/login");
             }
         };
     }
