@@ -28,7 +28,9 @@ public class MyExceptionHandler {
          * Integer statusCode = (Integer) request
          .getAttribute("javax.servlet.error.status_code");
          */
+        //todo 2019年9月5日 15:36:18 自动获取正确的错误码
         request.setAttribute("javax.servlet.error.status_code",500);
+
         map.put("code","user.notexist");
         map.put("message","用户出错啦");
 
