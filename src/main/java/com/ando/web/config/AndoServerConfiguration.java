@@ -3,6 +3,8 @@ package com.ando.web.config;
 import com.ando.web.filter.MyFilter;
 import com.ando.web.listener.MyListener;
 import com.ando.web.servlet.MyServlet;
+import org.springframework.boot.web.server.ConfigurableWebServerFactory;
+import org.springframework.boot.web.server.WebServerFactoryCustomizer;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
@@ -36,7 +38,7 @@ public class AndoServerConfiguration {
         return registrationBean;
     }
 
-    //配置嵌入式的Servlet容器   - > 已废弃 ErrorPageConfig
+    //配置嵌入式的Servlet容器   - > 已废弃 WebServerFactoryCustomizer<ConfigurableWebServerFactory>
 //    @Bean
 //    public EmbeddedServletContainerCustomizer embeddedServletContainerCustomizer(){
 //        return new EmbeddedServletContainerCustomizer() {
@@ -48,5 +50,16 @@ public class AndoServerConfiguration {
 //            }
 //        };
 //    }
+
+    @Bean
+    public WebServerFactoryCustomizer webServerFactoryCustomizer() {
+        return new WebServerFactoryCustomizer<ConfigurableWebServerFactory>() {
+            @Override
+            public void customize(ConfigurableWebServerFactory factory) {
+                factory.setPort(8083);
+            }
+        };
+    }
+
 
 }
