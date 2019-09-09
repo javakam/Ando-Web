@@ -3,7 +3,7 @@ package com.ando.web.listener;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-public class MyListener implements ServletContextListener {
+public class AndoServletRegistrationListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         System.out.println("contextInitialized...web应用启动");

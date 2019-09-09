@@ -1,8 +1,8 @@
 package com.ando.web.config;
 
-import com.ando.web.filter.MyFilter;
-import com.ando.web.listener.MyListener;
-import com.ando.web.servlet.MyServlet;
+import com.ando.web.filter.AndoFilterRegistration;
+import com.ando.web.listener.AndoServletRegistrationListener;
+import com.ando.web.servlet.AndoServletRegistration;
 import org.springframework.boot.web.server.ConfigurableWebServerFactory;
 import org.springframework.boot.web.server.WebServerFactoryCustomizer;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -14,27 +14,28 @@ import org.springframework.context.annotation.Configuration;
 import java.util.Arrays;
 
 @Configuration
-public class AndoServerConfiguration {
+public class ServerConfig {
 
     //注册三大组件
+
     @Bean
     public ServletRegistrationBean myServlet() {
-        ServletRegistrationBean registrationBean = new ServletRegistrationBean(new MyServlet(), "/myServlet");
+        ServletRegistrationBean registrationBean = new ServletRegistrationBean(new AndoServletRegistration(), "/myServlet");
         registrationBean.setLoadOnStartup(1);
         return registrationBean;
     }
 
     @Bean
     public FilterRegistrationBean myFilter() {
-        FilterRegistrationBean registrationBean = new FilterRegistrationBean();
-        registrationBean.setFilter(new MyFilter());
+        FilterRegistrationBean<AndoFilterRegistration> registrationBean = new FilterRegistrationBean<AndoFilterRegistration>();
+        registrationBean.setFilter(new AndoFilterRegistration());
         registrationBean.setUrlPatterns(Arrays.asList("/hello", "/myServlet"));
         return registrationBean;
     }
 
     @Bean
     public ServletListenerRegistrationBean myListener() {
-        ServletListenerRegistrationBean<MyListener> registrationBean = new ServletListenerRegistrationBean<>(new MyListener());
+        ServletListenerRegistrationBean<AndoServletRegistrationListener> registrationBean = new ServletListenerRegistrationBean<>(new AndoServletRegistrationListener());
         return registrationBean;
     }
 
@@ -51,6 +52,7 @@ public class AndoServerConfiguration {
 //        };
 //    }
 
+    //配置嵌入式的 Servlet 容器
     @Bean
     public WebServerFactoryCustomizer webServerFactoryCustomizer() {
         return new WebServerFactoryCustomizer<ConfigurableWebServerFactory>() {
@@ -60,6 +62,4 @@ public class AndoServerConfiguration {
             }
         };
     }
-
-
 }
