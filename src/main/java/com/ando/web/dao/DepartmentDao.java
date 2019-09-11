@@ -1,6 +1,6 @@
 package com.ando.web.dao;
 
-import com.ando.web.entities.Department;
+import com.ando.web.bean.Department;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;

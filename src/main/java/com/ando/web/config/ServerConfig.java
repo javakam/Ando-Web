@@ -17,7 +17,6 @@ import java.util.Arrays;
 public class ServerConfig {
 
     //注册三大组件
-
     @Bean
     public ServletRegistrationBean myServlet() {
         ServletRegistrationBean registrationBean = new ServletRegistrationBean(new AndoServletRegistration(), "/myServlet");
@@ -58,7 +57,7 @@ public class ServerConfig {
         return new WebServerFactoryCustomizer<ConfigurableWebServerFactory>() {
             @Override
             public void customize(ConfigurableWebServerFactory factory) {
-                factory.setPort(8083);
+                factory.setPort(80);
             }
         };
     }
