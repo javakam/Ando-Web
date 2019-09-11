@@ -2,8 +2,8 @@ package com.ando.web.controller;
 
 import com.ando.web.dao.DepartmentDao;
 import com.ando.web.dao.EmployeeDao;
-import com.ando.web.entities.Department;
-import com.ando.web.entities.Employee;
+import com.ando.web.bean.Department;
+import com.ando.web.bean.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

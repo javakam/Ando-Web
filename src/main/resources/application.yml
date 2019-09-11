@@ -1,0 +1,63 @@
+# spring.resources.static-locations=classpath:/hello/,classpath:/ando/
+# 项目访问路径
+server:
+  # 拦截器 com.ando.web.config.ServerConfig
+  port: 8083
+  servlet:
+    context-path: /crud
+  tomcat:
+    uri-encoding: UTF-8
+
+# spring 配置
+spring:
+  mvc:
+    date-format: yyyy-MM-dd
+  thymeleaf:
+    # 禁用缓存
+    cache: false
+  # 国际化配置文件（包名.基础名）
+  messages:
+    basename: i18n.login
+  datasource:
+    username: root
+    password: ma1bao2
+    url: jdbc:mysql://116.62.155.140:3306/work?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #spring某个版本之后需要加上这句，否则不会自动执行sql文件
+    initialization-mode: always
+
+    # schema.sql中一般存放的是建表语句
+    #    schema:
+    #      - classpath:department.sql
+    # data.sql中一般存放的是需要插入更新等sql语句# data.sql中一般存放的是需要插入更新等sql语句
+    #    data:
+    #      - classpath:
+
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    #   配置监控统计拦截的 filters，去掉后监控界面 sql 无法统计，'wall'用于防火墙
+    filters: stat,wall,slf4j
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+
+mybatis:
+  # 指定全局配置文件位置
+  config-location: classpath:mybatis/mybatis-config.xml
+  # 指定sql映射文件位置
+  mapper-locations: classpath:mybatis/mapper/*.xml
+
+
+#    schema:
+#      - classpath:sql/department.sql
+#      - classpath:sql/employee.sql

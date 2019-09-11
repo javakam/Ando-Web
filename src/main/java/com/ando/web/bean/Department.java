@@ -1,4 +1,4 @@
-package com.ando.web.entities;
+package com.ando.web.bean;
 
 public class Department {
 
