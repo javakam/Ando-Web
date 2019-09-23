@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.ando.web</groupId>
-    <artifactId>ando-springboot-web</artifactId>
+    <artifactId>AndoWeb</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>ando-springboot-web</name>
+    <name>AndoWeb</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
